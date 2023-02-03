@@ -49,10 +49,11 @@ function App() {
          />
 
          <h3>Uploaded Image</h3>
-         <span>{postImage.Image}</span>
+         <span>Successfully uploaded!</span>
 
          <button type='submit'>Submit</button>
       </form>
+ <img src={postImage.Image} alt="uploadimg" />
     </div>
   )
 }
