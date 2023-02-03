@@ -9,35 +9,34 @@ import Image from "./model/Image.js";
 dotenv.config();
 const app = express();
 app.use(express.json())
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(cors());
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
-app.get("/",async (req,res)=>{
+app.get('/', (req, res) => {
     try{
-        Image.find({}).then((data)=>{
-           res.json(data)
-        }).catch((err)=>{
-            res.status(429).json(err)
+        Post.find({}).then(data => {
+            res.json(data)
+        }).catch(error => {
+            res.status(408).json({ error })
         })
-        res.status(200).send("You're in the Home Page")
-    }catch(err){
-        res.status(500).json(err.message)
+    }catch(error){
+        res.json({error})
     }
 })
 
-app.post("/upload",async(req,res)=>{
-    const img = req.body;
-     try{
-        const newImg = await Image.create(img);
-        newImg.save();
-        res.status(201).send("uploaded img!")
-     }catch(err){
-        res.status(500).json(err);
-     }
+/** POST: http://localhost:8080/uploads  */
+app.post("/upload", async (req, res) => {
+    const body = req.body;
+    try{
+        const newImage = await Post.create(body)
+        newImage.save();
+        res.status(201).send("New image uploaded...!")
+    }catch(error){
+        res.status(409).json({ message : error.message })
+    }
 })
-
 // mongoose setup
 const PORT = process.env.PORT ;
 mongoose.connect(process.env.MONGO_URL,{
