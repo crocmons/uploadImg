@@ -4,7 +4,7 @@ import './App.css'
 
 import axios from 'axios';
 
-// const url = "http://localhost:5000/upload"
+const url = "https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
 
 function App() {
   
@@ -36,7 +36,7 @@ function App() {
       <form onSubmit={handleSubmit}>
 
         <label htmlFor="file-upload" className='custom-file-upload'>
-          <img src={postImage.Image} alt="uploadimg" />
+          <img src={postImage.Image || url} alt="uploadimg" />
         </label>
 
         <input 
