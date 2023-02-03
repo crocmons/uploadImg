@@ -17,7 +17,7 @@ app.use(cors());
 app.get("/",async (req,res)=>{
     try{
         Image.find({}).then((data)=>{
-           res.send(data)
+           res.json(data)
         }).catch((err)=>{
             res.status(429).json(err)
         })
@@ -32,7 +32,7 @@ app.post("/upload",async(req,res)=>{
      try{
         const newImg = await Image.create(img);
         newImg.save();
-        res.status(200).send(newImg)
+        res.status(201).send("uploaded img!")
      }catch(err){
         res.status(500).json(err);
      }
