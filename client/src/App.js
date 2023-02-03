@@ -49,7 +49,7 @@ function App() {
          />
 
          <h3>Uploaded Image</h3>
-         <span>File</span>
+         <span>{postImage.Image}</span>
 
          <button type='submit'>Submit</button>
       </form>
