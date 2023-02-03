@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 app.post("/upload", async (req, res) => {
     const body = req.body;
     try{
-        const newImage = await Post.create(body)
+        const newImage = await Image.create(body)
         newImage.save();
         res.status(201).send("New image uploaded...!")
     }catch(error){
