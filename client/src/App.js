@@ -53,7 +53,7 @@ function App() {
 
          <button type='submit'>Submit</button>
       </form>
- <img src={postImage.Image} alt="uploadimg" />
+ <img className='custom-file-upload' src={postImage.Image} alt="uploadimg" />
     </div>
   )
 }
