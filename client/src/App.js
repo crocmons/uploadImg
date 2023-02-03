@@ -12,7 +12,7 @@ function App() {
 
   const createPost = async (newImage) => {
     try{
-      await axios.post("http://localhost:5000/upload", newImage)
+      await axios.post("https://imageupload-jilk.onrender.com/upload", newImage)
     }catch(error){
       console.log(error)
     }
