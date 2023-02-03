@@ -1,18 +1,18 @@
 import { useState } from 'react'
-// import avatar from './assets/profile.png'
+import avatar from './assets/profile.png'
 import './App.css'
 
 import axios from 'axios';
 
-const url = "https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
+const url = "https://imageupload-jilk.onrender.com/upload"
 
 function App() {
   
-  const [postImage, setPostImage] = useState( { Image : ""})
+  const [postImage, setPostImage] = useState( { myFile : ""})
 
   const createPost = async (newImage) => {
     try{
-      await axios.post("https://imageupload-jilk.onrender.com/upload", newImage)
+      await axios.post(url, newImage)
     }catch(error){
       console.log(error)
     }
@@ -28,7 +28,7 @@ function App() {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     console.log(base64)
-    setPostImage({ ...postImage, Image : base64 })
+    setPostImage({ ...postImage, myFile : base64 })
   }
 
   return (
@@ -36,24 +36,23 @@ function App() {
       <form onSubmit={handleSubmit}>
 
         <label htmlFor="file-upload" className='custom-file-upload'>
-          <img src={postImage.Image || url} alt="uploadimg" />
+          <img src={postImage.myFile || avatar} alt="" />
         </label>
 
         <input 
           type="file"
           lable="Image"
-          name="Image"
+          name="myFile"
           id='file-upload'
           accept='.jpeg, .png, .jpg'
           onChange={(e) => handleFileUpload(e)}
          />
 
-         <h3>Uploaded Image</h3>
-         <span>Successfully uploaded!</span>
+         <h3>Doris Wilder</h3>
+         <span>Designer</span>
 
          <button type='submit'>Submit</button>
       </form>
- <img className='custom-file-upload' src={postImage.Image} alt="uploadimg" />
     </div>
   )
 }
