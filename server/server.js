@@ -16,7 +16,7 @@ app.use(express.static("public"));
 
 app.get('/', (req, res) => {
     try{
-        Post.find({}).then(data => {
+        Image.find({}).then(data => {
             res.json(data)
         }).catch(error => {
             res.status(408).json({ error })
@@ -31,8 +31,8 @@ app.post("/upload", async (req, res) => {
     const body = req.body;
     try{
         const newImage = await Image.create(body);
-        res.status(201).send("New image uploaded...!")
         newImage.save();
+        res.status(200).send("New image uploaded...!")
     }catch(error){
         res.status(409).json({ message : error.message })
     }
