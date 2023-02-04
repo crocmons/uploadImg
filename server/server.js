@@ -30,9 +30,9 @@ app.get('/', (req, res) => {
 app.post("/upload", async (req, res) => {
     const body = req.body;
     try{
-        const newImage = await Image.create(body)
-        newImage.save();
+        const newImage = await Image.create(body);
         res.status(201).send("New image uploaded...!")
+        newImage.save();
     }catch(error){
         res.status(409).json({ message : error.message })
     }
