@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 })
 
 /** POST: http://localhost:8080/uploads  */
-app.post("/upload", async (req, res) => {
+app.post("/", async (req, res) => {
     const body = req.body;
     try{
         const newImage = await Image.create(body);
