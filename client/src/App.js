@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import avatar from './assets/profile.png'
+// import avatar from './assets/profile.png'
 import './App.css'
 
 import axios from 'axios';
@@ -8,7 +8,7 @@ const url = "https://imageupload-jilk.onrender.com/upload"
 
 function App() {
   
-  const [postImage, setPostImage] = useState( { myFile : ""})
+  const [postImage, setPostImage] = useState( { Image : ""})
 
   const createPost = async (newImage) => {
     try{
@@ -28,7 +28,7 @@ function App() {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     console.log(base64)
-    setPostImage({ ...postImage, myFile : base64 })
+    setPostImage({ ...postImage, Image : base64 })
   }
 
   return (
@@ -36,13 +36,13 @@ function App() {
       <form onSubmit={handleSubmit}>
 
         <label htmlFor="file-upload" className='custom-file-upload'>
-          <img src={postImage.myFile || avatar} alt="" />
+          <img src={postImage.Image } alt="" />
         </label>
 
         <input 
           type="file"
           lable="Image"
-          name="myFile"
+          name="Image"
           id='file-upload'
           accept='.jpeg, .png, .jpg'
           onChange={(e) => handleFileUpload(e)}
