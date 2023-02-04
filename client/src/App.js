@@ -4,7 +4,7 @@ import './App.css'
 
 import axios from 'axios';
 
-const url = "https://imageupload-jilk.onrender.com/upload"
+const url = "https://imageupload-jilk.onrender.com/"
 
 function App() {
   
@@ -48,8 +48,8 @@ function App() {
           onChange={(e) => handleFileUpload(e)}
          />
 
-         <h3>Doris Wilder</h3>
-         <span>Designer</span>
+         <h3>Your Image</h3>
+         <span>Click Submit to store image on db</span>
 
          <button type='submit'>Submit</button>
       </form>
