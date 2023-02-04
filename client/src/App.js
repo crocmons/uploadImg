@@ -5,6 +5,7 @@ import './App.css'
 import axios from 'axios';
 
 const url = "https://imageupload-jilk.onrender.com/"
+const imageurl = "https://www.shutterstock.com/image-vector/upload-vector-icon-cloud-storage-260nw-584449174.jpg"
 
 function App() {
   
@@ -36,7 +37,7 @@ function App() {
       <form onSubmit={handleSubmit}>
 
         <label htmlFor="file-upload" className='custom-file-upload'>
-          <img src={postImage.Image } alt="" />
+          <img src={postImage.Image || imageurl  } alt="" />
         </label>
 
         <input 
